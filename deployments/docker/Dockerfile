@@ -9,7 +9,7 @@ COPY deployments/docker/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy app source
-COPY deployments/docker/app.py .
+COPY app.py .
 
 # Expose port
 EXPOSE 5000
