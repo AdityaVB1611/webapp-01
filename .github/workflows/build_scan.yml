@@ -38,6 +38,10 @@ jobs:
           dockerfile: deployments/docker/Dockerfile
           image: ${{ steps.build.outputs.image }}
           image_only: true
+      - name: Debug image tag
+        run: |
+          echo "Resolved image tag: ${{ needs.build_scan.outputs.image_tag }}"
+
 
   push_image:
     runs-on: ubuntu-latest
