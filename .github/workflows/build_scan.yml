@@ -11,7 +11,7 @@ jobs:
   build_scan:
     runs-on: ubuntu-latest
     outputs:
-      image_tag: v${{ steps.build.image_tag }}
+      image_tag: v${{ steps.build.outputs.image }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -35,10 +35,9 @@ jobs:
       - name: Scan Docker Image for vulnerabilities
         uses: OWASP/DockSec@main
         with:
-          image-ref: ${{ steps.build.outputs.image_tag }}
-          format: table
-          exit-code: '1'
-          ignore-unfixed: true
+          dockerfile: deployments/docker/Dockerfile
+          image: ${{ steps.build.outputs.image }}
+          image_only: true
 
   push_image:
     runs-on: ubuntu-latest
