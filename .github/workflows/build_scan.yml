@@ -29,8 +29,8 @@ jobs:
         id: build
         run: |
           IMAGE=${{ secrets.DOCKER_USER }}/webapp01:latest
-          docker build -t $IMAGE /deployments/docker/Dockerfile .
-          echo "image=$IMAGE" >> &GITHUB_OUTPUT
+          docker build -t $IMAGE -f /deployments/docker/Dockerfile .
+          echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
       - name: Scan Docker Image for vulnerabilities
         uses: OWASP/DockSec@main
