@@ -54,4 +54,4 @@ jobs:
           echo "Resolved image tag: ${{ needs.build_scan.outputs.image_tag }}"
 
       - name: Push Docker image
-        run: docker push ${{ needs.build_scan.outputs.image_tag }}
+        run: docker image push ${{ needs.build_scan.outputs.image_tag }}
