@@ -11,7 +11,7 @@ jobs:
   build_scan:
     runs-on: ubuntu-latest
     outputs:
-      image_tag: v${{ steps.build.outputs.image }}
+      image_tag: ${{ steps.build.outputs.image }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
