@@ -29,7 +29,7 @@ jobs:
         id: build
         run: |
           IMAGE=${{ secrets.DOCKER_USER }}/webapp01:latest
-          docker build -t $IMAGE -f /deployments/docker/Dockerfile .
+          docker build -t $IMAGE -f ./deployments/docker/Dockerfile .
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
       - name: Scan Docker Image for vulnerabilities
